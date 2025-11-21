@@ -7,7 +7,12 @@
   <title>Expect better you-에스쁘아</title>
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/swiper-bundle.min.css">
   <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+  <script src="./js/jquery-3.7.1.min.js"></script>
+  <script src="./js/jquery-ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="./js/script.js"></script>
   <style>
     .hidden_text {
       word-wrap: 1px;
@@ -111,9 +116,9 @@
 
 
   <!-- h_seciton -->
-  <section class="hero">
-    <div class="hero_i">
-      <div class="h_con">
+  <section class="swiper mySwiper hero">
+    <div class="swiper-wrapper hero_i">
+      <div class="swiper-slide h_con">
         <picture class="h_background">
           <source media="(max-width: 768px)" srcset="./img/imgi_5_IMG1761tzz719607962.jpg">
           <img src="./img/imgi_4_IMG1761lqI719596084.jpg" alt="노웨어 립스틱 바밍 글로우 메리베리">
@@ -128,12 +133,12 @@
           <p>#클린광 #메리베리</p>
         </div>
       </div>
-      <div class="h_con">
+      <div class="swiper-slide h_con">
         <picture class="h_background">
           <source media="(max-width: 768px)" srcset="./img/imgi_7_IMG1760zgs942981555.jpg">
           <img src="./img/imgi_6_IMG1758IZq607509862.jpg" alt="갤럭시 빔 컬렉션">
         </picture>
-        <div class="h_text">
+        <div class="h_text wtext">
           <span>한계 없이 무한하게 다채로운 빛으로 감싸는 순도 높은 갤럭시급 컬러 스토리</span>
           <h2>갤럭시 빔 컬렉션</h2>
           <div class="h_btn">
@@ -143,7 +148,7 @@
           <p>#100시간지속 #초밀착커버</p>
         </div>
       </div>
-      <div class="h_con">
+      <div class="swiper-slide h_con">
         <picture class="h_background">
           <source media="(max-width: 768px)" srcset="./img/imgi_9_IMG1755Owu829025233.jpg">
           <img class="desk" src="./img/imgi_8_IMG1755lrw829016184.jpg" alt="스트로빙 하이라이터">
@@ -158,7 +163,7 @@
           <p>#직구필요없는 #프리미엄 #AAA진주광</p>
         </div>
       </div>
-      <div class="h_con">
+      <div class="swiper-slide h_con">
         <picture class="h_background">
           <source media="(max-width: 768px)" srcset="./img/imgi_11_IMG1753VZP321667835.jpg">
           <img src="./img/imgi_10_IMG1753ZTl321655277.jpg" alt="베어 글로우 립밤">
@@ -173,7 +178,7 @@
           <p>#말간혈색 #비건립밤</p>
         </div>
       </div>
-      <div class="h_con">
+      <div class="swiper-slide h_con">
         <picture class="h_background">
           <source media="(max-width: 768px)" srcset="./img/imgi_13_IMG1753EzW322318406.jpg">
           <img src="./img/imgi_12_IMG1753mWf405197221.jpg" alt="아이코어 팔레트 미드나잇 쉘">
@@ -188,12 +193,12 @@
           <p>#미지근모브 #쉘글로우</p>
         </div>
       </div>
-      <div class="h_con">
+      <div class="swiper-slide h_con">
         <picture class="h_background">
           <source media="(max-width: 768px)" srcset="./img/imgi_15_IMG1752wGX813957828.jpg">
           <img src="./img/imgi_14_IMG1752FQU813953036.jpg" alt="HONEY CREMA SERIES">
         </picture>
-        <div class="h_text">
+        <div class="h_text wtext">
           <span>꾸뛰르 립틴트 글레이즈</span>
           <h2>HONEY CREMA SERIES</h2>
           <div class="h_btn">
@@ -203,7 +208,7 @@
           <p>녹아내리는 허니, 그리고 감도는 커피</p>
         </div>
       </div>
-      <div class="h_con">
+      <div class="swiper-slide h_con">
         <picture class="h_background">
           <source media="(max-width: 768px)" srcset="./img/imgi_3_IMG1752jMQ814113668.jpg">
           <img src="./img/imgi_2_IMG1752rkW814097771.jpg" alt="HONEY CREMA SERIES">
@@ -218,11 +223,8 @@
           <p>녹아내리는 허니, 그리고 감도는 커피크레마</p>
         </div>
       </div>
-      <div class="slidebar">
-        <div class="back"></div>
-        <div class="front"></div>
-      </div>
     </div>
+    <div class="swiper-scrollbar"></div>
   </section>
   <!-- //h_seciton -->
 
