@@ -49,5 +49,36 @@ document.addEventListener('DOMContentLoaded', function () {
       type: "progressbar",
     },
   });
+
+  swiper = new Swiper(".slogan", {
+    spaceBetween: 0,
+    centeredSlides: false,
+    loop: true,
+    slidesPerView: 'auto',
+    speed: 25000, // 천천히 슬라이드
+    autoplay: {
+      delay: 0, // 멈춤 없이
+      disableOnInteraction: false,
+    },
+    freeMode: true, // 부드러운 연속 이동
+    freeModeMomentum: false,
+    allowTouchMove: false,
+  });
+
+  swiper = new Swiper(".ht_contents", {
+    slidesPerView: 6.5,
+    spaceBetween: 8,
+    loop: true,
+    slidesOffsetBefore: -40,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+
 });
 
+
+document.addEventListener('DOMContentLoaded', function () {
+  AOS.init();
+});
