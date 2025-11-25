@@ -44,9 +44,9 @@ document.addEventListener('DOMContentLoaded', function () {
       disableOnInteraction: false,
     },
     pagination: {
-      el: "swiper-scrollbar",
-      clickable: true,
+      el: ".swiper-scrollbar",
       type: "progressbar",
+      // clickable: true,
     },
   });
 
@@ -69,14 +69,56 @@ document.addEventListener('DOMContentLoaded', function () {
     slidesPerView: 6.5,
     spaceBetween: 8,
     loop: true,
+    freeMode: true,
     slidesOffsetBefore: -40,
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
+    pagination: {
+      el: ".swiper-scrollbar",
+      type: "progressbar",
+      // clickable: true,
+    },
   });
 
+
+  var swiper = new Swiper(".noti_i", {
+    direction: "vertical",
+    loop: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
+  });
+
+  var swiper = new Swiper(".bigimg", {
+    slidesPerView: 1,
+    loop: true,
+    spaceBetween: 0,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+  const products = document.querySelectorAll(".pd_box");
+
+  // 1) 슬라이드 이동 시 제품 highlight
+  swiper.on("slideChange", function () {
+    const realIndex = swiper.realIndex; // loop 시 실제 슬라이드 인덱스
+    products.forEach((pd, idx) => pd.classList.remove("on"));
+    products[realIndex].classList.add("on");
+  });
+
+  // 2) 제품 클릭 시 슬라이드 이동
+  products.forEach((pd, idx) => {
+    pd.addEventListener("click", () => {
+      swiper.slideToLoop(idx); // loop 슬라이드 이동
+    });
+  });
 });
+
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
