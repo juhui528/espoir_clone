@@ -58,6 +58,7 @@ header .header_i .nav_btn .ham{
     width: 32px;
     height: 24px;
     display: none;
+    cursor: pointer;
 }
 header .header_i .nav_btn .ham .ham_i{
     width: 100%;
@@ -73,10 +74,25 @@ header .header_i .nav_btn .ham .ham_i .line{
 }
 
 
-header.header_dark {
-    color: #000 !important;
+header.header_dark .header_i a,
+header.header_dark .header_i span,
+header.header_dark .header_i .login span a {
+    color: #000;
     transition: background-color 0.3s ease;
-  }
+} 
+header.header_dark .header_i .nav_btn a span{
+    rotate: -90deg;
+    filter: none;
+    transition: background-color 0.3s ease;
+}
+header.header_dark .header_i .nav_btn .ham .ham_i .line{
+    background-color: #000;
+    transition: background-color 0.3s ease;
+}
+header.header_dark .header_i .logo{
+    filter: invert(1) brightness(0);
+    transition: background-color 0.3s ease;
+}
 /* //ham */
 
 /* //header */
@@ -113,6 +129,13 @@ nav .nav_i{
    display: flex;
    flex-direction: column;
    gap: 24px 0;
+}
+
+nav .nav_i .nav_logo .m_top .close{
+    display: none;
+}
+nav .nav_i .nav_logo .login{
+    display: none;
 }
 nav .nav_i ul{
     display: flex;
@@ -319,13 +342,14 @@ nav .nav_i ul .langbox ul{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ce0e2d;
     padding: 8px 46px;
 }
 .creator .creator_i .c_text .c_btn a{
     color: #fff;
     font-size: clamp(18px, calc( (20 / 1024) * 100vw ), 24px);
     font-weight: 500;
+    background-color: #ce0e2d;
+    padding: 12px 46px;
 }
 
 /* //creator */
@@ -347,12 +371,14 @@ nav .nav_i ul .langbox ul{
     align-self: center;
 }
 .new .new_i .n_contents{
+    width: 100%;
     display: flex;
     gap: 0 20px;
+    flex-wrap: nowrap;
 }
 .new .new_i .n_contents .bigimg{
     width: calc((100% - 20px) / 2);
-    min-height: 600px;
+    min-height: 400px;
     position: relative;
     margin: 0;
     padding: 0;
@@ -407,6 +433,7 @@ nav .nav_i ul .langbox ul{
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(2,1fr);
+    flex-wrap: nowrap;
 }
 .new .new_i .n_contents .nproducts_wrap .n_products .pd_box{
     background-color: #fdfcfc;
@@ -540,7 +567,110 @@ nav .nav_i ul .langbox ul{
 
 
 /* hot tok */
+.hottok{
+    width: 100%;
+    margin: 150px 0;
+}
 
+.hottok .hottok_i .ht_title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 70px;
+}
+
+.hottok .hottok_i .contents_wrap{
+    width: 100%;
+    overflow: hidden;
+}
+
+.hottok .hottok_i .contents_wrap .ht_contents{
+    width: 100%;
+    overflow: visible;
+    padding: 0 clamp(140px,calc( (180 / 1440) * 100vw ),240px);
+    position: relative;
+}
+/* .hottok .hottok_i .contents_wrap .ht_conte */
+.hottok .hottok_i .contents_wrap .ht_contents .ht_slide{
+    transform: translateX(-360px);
+    padding-bottom: 60px;
+    max-width: 1440px;
+    margin: auto;
+}
+
+.hottok .hottok_i .contents_wrap .ht_contents .ht_slide .s_con{
+    position: relative;
+    width: 326px !important;
+}
+.hottok .hottok_i .contents_wrap .ht_contents .ht_slide .s_con .pop figure{
+    overflow: hidden;
+    border-radius: 8px;
+}
+.hottok .hottok_i .contents_wrap .ht_contents .ht_slide .s_con .pop .play{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.hottok .hottok_i .contents_wrap .ht_contents .ht_btn{
+    height: 580px;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;  
+    max-width: 230px;
+}
+
+.hottok .hottok_i .contents_wrap .ht_contents .ht_btn.ht_left{
+    left: 0;
+}
+
+.hottok .hottok_i .contents_wrap .ht_contents .ht_btn.ht_right{
+    right: 0;
+    padding-right: 100px;
+    justify-content: end;
+}
+
+.hottok .hottok_i .contents_wrap .ht_contents .ht_btn button{
+    background: none;
+    border: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ;
+    margin: 0 24px;
+    width: 90px;
+    height: 100px;
+    transform: translateY(-50%);
+}
+.hottok .hottok_i .contents_wrap .ht_contents:hover .ht_btn button{
+    opacity: 1;
+    visibility: visible;
+}
+.hottok .hottok_i .contents_wrap .ht_contents .ht_btn::before{
+    content: "";
+    width: 240px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+
+
+.section_wrap .hottok .hottok_i .contents_wrap .ht_contents .swiper-scrollbar{
+    background-color: #00000028;
+    height: 2px;
+    max-width: 1440px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.section_wrap .hottok .hottok_i .contents_wrap .ht_contents .swiper-pagination-progressbar-fill{
+    background: #000 !important;
+}
 
 /* //hot tok */
 
@@ -703,16 +833,17 @@ footer .footer_i .f_btm .f_text .ft_inner a{
 /* //footer */
 
 /* top_btn */
-.section_wrap{
-    position: relative;
-}
-.section_wrap .top{
+.top {
     position: fixed;
-    z-index: 999;
     right: 40px;
     bottom: 40px;
-}
-.section_wrap .top button{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+  }
+.top button{
     background: none;
     border: none;
     width: 40px;
@@ -724,6 +855,46 @@ footer .footer_i .f_btm .f_text .ft_inner a{
     object-fit: cover;
 }
 /* //top_btn */
+
+
+
+.btn_move_in {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    background-color: #ce0e2d;
+    padding: 12px 46px;
+  }
+  
+  .btn_move_in::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fef1e2;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s linear;
+    z-index: 0; /* 배경이니까 z-index 낮게 */
+  }
+  
+  .btn_move_in>span {
+    position: relative;
+    z-index: 3; /* 글자가 항상 위 */
+    color: #fff;
+    transition: color 0.4s linear;
+  }
+  
+  .btn_move_in:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .btn_move_in:hover>span {
+    color: #ce0e2d; /* 호버 시 글자 색상 변경 */
+  }
+
 
 
 
@@ -806,6 +977,10 @@ footer .footer_i .f_btm .f_text .ft_inner a{
         grid-template-columns: repeat(4,1fr);
     }
 
+    .hottok .hottok_i .contents_wrap .ht_contents .ht_btn::before{
+        display: none;
+    }
+
     
     .hottok .hottok_i .contents_wrap .ht_contents .ht_slide{
         gap: 0 16px;
@@ -820,6 +995,34 @@ footer .footer_i .f_btm .f_text .ft_inner a{
 }
 
 @media screen and (max-width: 768px) {
+   
+    nav .nav_i .nav_logo{
+        display: flex;
+        flex-direction: column;
+        gap: 16px 0;
+    }
+
+    nav .nav_i .nav_logo .m_top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    nav .nav_i .nav_logo .m_top .close{
+       display: block;
+       width: 18px;
+       height: 18px;
+       cursor: pointer;
+    }
+    nav .nav_i .nav_logo .m_top .m_logo{
+        width: 74px;
+    }
+    nav .nav_i .nav_logo .login{
+        display: flex;
+        gap: 0 24px;
+    }
+
+
+
     .hero .hero_i .h_con .h_text{
         position: absolute;
         left: 0;

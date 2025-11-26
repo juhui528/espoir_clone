@@ -1,15 +1,43 @@
 $(function () {
-  //btn_ani
-  $(".nav_btn").on('mouseenter', function () {
-    $("nav").addClass("on");
-  });
-  $("nav").on('mouseleave', function () {
-    $("nav").removeClass("on");
+
+  //nav_animation
+  function setNavEvent() {
+    // 기존 이벤트 제거
+    $(".nav_btn").off('mouseenter click');
+    $("nav").off('mouseleave click');
+    $(".close").off('click');
+
+    if (window.innerWidth > 1024) {
+      // PC: hover 이벤트
+      $(".nav_btn").on('mouseenter', function () {
+        $("nav").addClass("on");
+      });
+      $("nav").on('mouseleave', function () {
+        $("nav").removeClass("on");
+      });
+    } else {
+      // 모바일/태블릿: click 이벤트
+      $(".nav_btn").on('click', function () {
+        $("nav").toggleClass("on");
+      });
+      $(".close").on('click', function () {
+        $("nav").removeClass("on");
+      });
+    }
+  }
+
+  // 초기 실행
+  setNavEvent();
+
+  // 화면 리사이즈 시 이벤트 재설정
+  $(window).on('resize', function () {
+    setNavEvent();
   });
 
 
+
   //btn_ani
-  $(".hero .hero_i .h_con .h_text a").on({
+  $(".hero .hero_i .h_con .h_text a, .creator .creator_i .c_text .c_btn a").on({
     mouseover: function () {
       $(this).stop().animate({
         backgroundColor: "#fef1e2",
@@ -25,39 +53,72 @@ $(function () {
   });
 
 
-  let header = $("header");
-  let headerHeight = header.outerHeight();
+
+
+  //header
+  const header = $("header");
 
   $(window).on("scroll", function () {
     let scrollTop = $(this).scrollTop();
-
-    // ⭐ 헤더 색 변경만 남김
-    if (scrollTop > 100) {
+    if (scrollTop > 800) {
       header.addClass("header_dark");
     } else {
       header.removeClass("header_dark");
     }
 
-    // ⭐ 탑버튼: footer 전까지만 노출
-    const footerTop = $("footer").offset().top;
-    const windowHeight = $(window).height();
+  });
 
-    if (scrollTop > 300 && scrollTop + windowHeight < footerTop - 30) {
-      $(".top").fadeIn();
+  // $(". .swiper-slide").each(function () {
+  //   const $slide = $(this);
+  //   const slideTop = $slide.offset().top;
+  //   const slideBottom = slideTop + $slide.outerHeight();
+
+  //   // 화면에 해당 슬라이드가 걸쳐있으면 체크
+  //   if (scrollTop + $(window).height() / 2 >= slideTop && scrollTop + $(window).height() / 2 < slideBottom) {
+  //     if ($slide.hasClass("white")) {
+  //       header.addClass("header_dark");
+  //     } else {
+  //       header.removeClass("header_dark");
+  //     }
+  //     return false; // 첫 번째 해당 슬라이드만 체크
+  //   }
+  // });
+
+
+
+  // top 버튼
+  const topBtn = $(".top");
+
+  $(window).on("scroll", function () {
+
+    let scrollTop = $(this).scrollTop();
+    let winH = $(window).height();
+    let footerTop = $("footer").offset().top;
+
+    // 보이기 / 숨기기
+    if (scrollTop > 300) topBtn.fadeIn();
+    else topBtn.fadeOut();
+
+    // footer에 닿으면 멈추기
+    let bottomSpace = 40;
+    let stopTrigger = footerTop - winH;
+
+    if (scrollTop >= stopTrigger) {
+      let diff = scrollTop - stopTrigger;
+      topBtn.css("transform", `translateY(-${diff}px)`);
     } else {
-      $(".top").fadeOut();
+      topBtn.css("transform", "translateY(0)");
     }
 
-
   });
 
-  // TOP 버튼 기능
-  $(".top").on("click", function () {
-    $("html, body").animate({ scrollTop: 0 }, 300);
+  topBtn.on("click", function () {
+    $("html, body").animate({ scrollTop: 0 }, 500);
   });
 
 
-})
+
+});
 
 
 
@@ -68,10 +129,7 @@ $(function () {
 document.addEventListener('DOMContentLoaded', function () {
   // 모든 .slide 클래스를 가진 요소들을 한 번에 초기화
   const mySwiper = new Swiper(".mySwiper", {
-    spaceBetween: 30,
-    centeredSlides: true,
     loop: true,
-    effect: "fade",
     autoplay: {
       delay: 3500,
       disableOnInteraction: false,
@@ -79,7 +137,6 @@ document.addEventListener('DOMContentLoaded', function () {
     pagination: {
       el: ".swiper-scrollbar",
       type: "progressbar",
-      // clickable: true,
     },
   });
 
@@ -150,6 +207,21 @@ document.addEventListener('DOMContentLoaded', function () {
           el: ".swiper-scrollbar",
           type: "progressbar",
         },
+        breakpoints: {
+
+          1: {
+            slidesPerView: 1,
+            spaceBetween: 16,
+          },
+          575: {
+            slidesPerView: 2,
+            spaceBetween: 16,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+        },
       });
     } else if (screenWidth > 1024 && productSwiper) {
       // 데스크탑이면 Swiper 제거 후 grid로 복원
@@ -171,14 +243,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
-
-  swiper = new Swiper(".ht_contents", {
-    slidesPerView: 6,
-    spaceBetween: 50,
+  const htSwiper = new Swiper(".ht_contents", {
+    slidesPerView: 4,
+    spaceBetween: 40,
+    roundLengths: true,
     loop: true,
-    freeMode: true,
-    // slidesOffsetBefore: -40,
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
@@ -186,16 +255,34 @@ document.addEventListener('DOMContentLoaded', function () {
     pagination: {
       el: ".swiper-scrollbar",
       type: "progressbar",
-      // clickable: true,
+    }, on: {
+      init: function () {
+        this.slideToLoop(1, 0); // 두 번째 슬라이드를 첫 화면처럼 시작
+        this.updateProgress();
+        this.updateSlidesClasses();
+        this.pagination.update();
+      }
     },
+    breakpoints: {
+      640: {
+        slidesPerView: 1,
+        spaceBetween: 16,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1440: {
+        slidesPerView: 4,
+        spaceBetween: 40,
+      },
+    },
+
   });
 
-
-});
-
+  htSwiper.init();
 
 
-
-document.addEventListener('DOMContentLoaded', function () {
+  //creat motion
   AOS.init();
 });
