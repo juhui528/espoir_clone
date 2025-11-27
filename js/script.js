@@ -256,16 +256,16 @@ document.addEventListener('DOMContentLoaded', function () {
         breakpoints: {
 
           1: {
-            slidesPerView: 1,
+            slidesPerView: 3,
             spaceBetween: 16,
           },
           575: {
-            slidesPerView: 2,
+            slidesPerView: 3,
             spaceBetween: 16,
           },
           768: {
-            slidesPerView: 3,
-            spaceBetween: 20,
+            slidesPerView: 3.6,
+            spaceBetween: 16,
           },
         },
       });
@@ -327,12 +327,12 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // 2. 클릭용 overlay
-  // $('.swiper-scrollbar-overlay').on('click', function (e) {
-  //   var drect = this.getBoundingClientRect();
-  //   var ratio = (e.clientX - drect.left) / drect.width;
+  $('.swiper-scrollbar-overlay').on('click', function (e) {
+    var drect = this.getBoundingClientRect();
+    var ratio = (e.clientX - drect.left) / drect.width;
 
-  //   htSwiper.slideToLoop(index); // loop 모드용
-  // });
+    htSwiper.slideToLoop(index); // loop 모드용
+  });
 
   htSwiper.init();
 
