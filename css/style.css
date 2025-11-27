@@ -932,7 +932,12 @@ footer .footer_i .f_btm .f_text .ft_inner a{
 /* //top_btn */
 
 
+@media screen and (max-width: 1500px) {
+    .store .store_i .view_btn{
+        left: 16px;
+    }
 
+}
 
 
 @media screen and (max-width: 1440px) {
@@ -942,7 +947,6 @@ footer .footer_i .f_btm .f_text .ft_inner a{
     footer .footer_i .f_btm{
         padding: 20px 40px;
     }
-
      
 }
 
@@ -951,7 +955,7 @@ footer .footer_i .f_btm .f_text .ft_inner a{
         padding-left: 0;
     }
 
-    .hero .hero_i .h_con .h_text a{
+    .btn_move_in{
         width: 190px;
         height: 44px;
         padding: 0;
@@ -1004,9 +1008,6 @@ footer .footer_i .f_btm .f_text .ft_inner a{
     .creator .creator_i .c_text .ct_img .c_subtitle{
         max-width: 250px;
     }
-
-
-
     .new .new_i .n_contents{
         flex-direction: column;
         gap: 20px 0;
@@ -1028,6 +1029,10 @@ footer .footer_i .f_btm .f_text .ft_inner a{
     .new .new_i .n_contents .nproducts_wrap .n_products{
         width: 120%;
         grid-template-columns: repeat(4,1fr);
+    }
+
+    .store .store_i{
+        padding: 0 16px;
     }
 
     .hottok .hottok_i .contents_wrap .ht_contents .ht_btn::before{
