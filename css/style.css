@@ -272,7 +272,6 @@ nav .nav_i ul .langbox button.open img {
     gap: 0 8px;
 }
 .hero .hero_i .h_con .h_text a{
-    padding: 12px 46px ;
     font-size: clamp(18px, calc( (20 / 1440) * 100vw ), 22px);
     font-weight: 700;
     letter-spacing: -0.5px;
@@ -280,7 +279,6 @@ nav .nav_i ul .langbox button.open img {
     background-color: #ce0e2d;
     align-content: center;
     font-family: "Libre Franklin", sans-serif;
-    transition: color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .hero .hero_i .h_con .h_text p{
     font-size: clamp(14px, calc( (16 / 1024) * 100vw ), 20px);
@@ -374,7 +372,6 @@ nav .nav_i ul .langbox button.open img {
     font-size: clamp(18px, calc( (20 / 1024) * 100vw ), 24px);
     font-weight: 500;
     background-color: #ce0e2d;
-    padding: 12px 46px;
 }
 
 /* //creator */
@@ -898,7 +895,10 @@ footer .footer_i .f_btm .f_text .ft_inner a{
     overflow: hidden;
     display: inline-block;
     background-color: #ce0e2d;
-    padding: 12px 46px;
+    width: 213px;
+    height: 49px;
+    line-height: 48px;
+    text-align: center;
   }
   
   .btn_move_in::before {
@@ -942,6 +942,8 @@ footer .footer_i .f_btm .f_text .ft_inner a{
     footer .footer_i .f_btm{
         padding: 20px 40px;
     }
+
+     
 }
 
 @media screen and (max-width: 1024px) {
@@ -970,8 +972,6 @@ footer .footer_i .f_btm .f_text .ft_inner a{
         align-items: center;
         justify-content: center;
     }
-
-
 
 
     .creator .creator_i{
@@ -1070,6 +1070,12 @@ footer .footer_i .f_btm .f_text .ft_inner a{
     .hero .hero_i .h_con .h_text h2{
         margin: 4px 0;
     }
+
+    .btn_move_in {
+        width: 170px;
+        height: 40px;
+        line-height: 40px;
+      }
 
     .new .new_i .n_contents .nproducts_wrap .n_products .pd_box .pd_wrap .pd_info .pd_name{
         font-size: 16px;
