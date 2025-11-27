@@ -117,6 +117,34 @@ $(function () {
   });
 
 
+  // 버튼 클릭: ul 토글
+  $('.langbox > button').on('click', function (e) {
+    e.stopPropagation(); // 외부 클릭 방지
+    var $ul = $(this).siblings('ul');
+
+    // 다른 열려 있는 ul 닫기 + 화살표 초기화
+    $('.langbox ul').not($ul).slideUp(200);
+    $('.langbox > button').not(this).removeClass('open');
+
+    // 클릭한 버튼 ul 토글
+    $ul.slideToggle(200);
+    $(this).toggleClass('open'); // open 클래스 토글
+  });
+
+  // li 클릭: 버튼 텍스트 변경 + ul 닫기 + 화살표 초기화
+  $('.langbox ul li').on('click', function () {
+    var selectedText = $(this).text();
+    var $btn = $(this).closest('.langbox').find('button');
+    $btn.contents().first()[0].textContent = selectedText;
+    $(this).parent('ul').slideUp(200);
+    $btn.removeClass('open'); // ul 닫히면 화살표 원래대로
+  });
+
+  // 외부 클릭 시 모든 ul 닫기 + 화살표 원래대로
+  $(document).on('click', function () {
+    $('.langbox ul').slideUp(200);
+    $('.langbox > button').removeClass('open');
+  });
 
 });
 
@@ -140,6 +168,21 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
+  // progressbar 클릭 이벤트 추가
+
+  const overlay = document.querySelector(".swiper-scrollbar-overlay");
+  const totalSlides = 7; // 실제 슬라이드 개수
+
+  overlay.addEventListener("click", (e) => {
+    const rect = overlay.getBoundingClientRect();
+    const ratio = (e.clientX - rect.left) / rect.width;
+    const targetIndex = Math.floor(ratio * totalSlides);
+
+    mySwiper.slideToLoop(targetIndex);
+  });
+
+
+  // 슬로건 모션
   const sloganSwiper = new Swiper(".slogan", {
     spaceBetween: 0,
     centeredSlides: false,
@@ -156,6 +199,8 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
+
+  // 공지사항슬라이드
   const notiSwiper = new Swiper(".noti_i", {
     direction: "vertical",
     loop: true,
@@ -165,6 +210,8 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
+
+  // 제품섹션 이미지 슬라이드
   const bigimgSwiper = new Swiper(".bigimg", {
     slidesPerView: 1,
     loop: true,
@@ -190,7 +237,6 @@ document.addEventListener('DOMContentLoaded', function () {
       bigimgSwiper.slideToLoop(idx); // loop 슬라이드 이동
     });
   });
-
 
   let productSwiper;
 
@@ -242,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
+  // hottok섹션 슬라이드
   const htSwiper = new Swiper(".ht_contents", {
     slidesPerView: 4,
     spaceBetween: 40,
@@ -278,6 +324,14 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     },
 
+  });
+
+  // 2. 클릭용 overlay
+  $('.swiper-scrollbar-overlay').on('click', function (e) {
+    var drect = this.getBoundingClientRect();
+    var ratio = (e.clientX - drect.left) / drect.width;
+
+    htSwiper.slideToLoop(index); // loop 모드용
   });
 
   htSwiper.init();

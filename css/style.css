@@ -28,6 +28,10 @@ header .header_i .login span a{
     color: #fff;
 }
 
+header .header_i .search{
+    cursor: pointer;
+}
+
 header .header_i .logo{
     width: 100%;
     display: flex;
@@ -209,6 +213,15 @@ nav .nav_i ul .langbox ul{
     gap: 8px 0;
     display: none;
 }
+
+nav .nav_i ul .langbox button img {
+    transition: transform 0.3s ease;
+  }
+  
+  /* open 클래스가 붙으면 180도 회전 */
+nav .nav_i ul .langbox button.open img {
+    transform: rotate(180deg);
+  }
 /* //nav */
 
 
@@ -286,10 +299,22 @@ nav .nav_i ul .langbox ul{
     bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
+    position: relative;
+    cursor: pointer;
 }
 .hero .swiper-pagination-progressbar-fill{
     background: #666 !important;
 }
+.hero .swiper-scrollbar-overlay {
+    position: absolute;
+    bottom: 72px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 15px;
+    cursor: pointer;
+    z-index: 10; 
+  }
 
 /* //h_section */
 
@@ -672,6 +697,17 @@ nav .nav_i ul .langbox ul{
     background: #000 !important;
 }
 
+.section_wrap .hottok .hottok_i .contents_wrap .swiper-scrollbar-overlay {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 1440px;
+  height: 20px; /* 클릭 편하게 확대 */
+  cursor: pointer;
+  z-index: 10;
+  background-color: #9f9f9f;
+  }
+
 /* //hot tok */
 
 
@@ -687,10 +723,10 @@ footer .footer_noti{
     background-color: #fff;
 }
 footer .footer_noti .fnoti_i{
-    max-width: 600px;
+    max-width: 500px;
     height: 100%;
     display: flex;
-    gap: 0 44px;
+    gap: 0 24px;
     justify-content: center;
     align-items: center;
     margin: auto;
@@ -699,18 +735,20 @@ footer .footer_noti .fnoti_i .noti{
     font-weight: 500;
 }
 footer .footer_noti .fnoti_i .noti_i ul{
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     /* gap: px 0; */
     align-self: center;
     height: 20px;
     padding-top: 2px;
+    width: fit-content;
 }
 
 footer .footer_noti .fnoti_i .fn_btn{
     font-family: "Roboto Condensed", sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: -0.5px;
+    font-size: 12px;
 }
 
 
@@ -854,9 +892,6 @@ footer .footer_i .f_btm .f_text .ft_inner a{
     height: 100%;
     object-fit: cover;
 }
-/* //top_btn */
-
-
 
 .btn_move_in {
     position: relative;
@@ -876,24 +911,26 @@ footer .footer_i .f_btm .f_text .ft_inner a{
     background-color: #fef1e2;
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.4s linear;
-    z-index: 0; /* 배경이니까 z-index 낮게 */
+    transition: transform 0.2s linear;
+    z-index: 0;
   }
   
-  .btn_move_in>span {
+  .btn_move_in span {
     position: relative;
-    z-index: 3; /* 글자가 항상 위 */
+    z-index: 3;
     color: #fff;
-    transition: color 0.4s linear;
+    transition: color 0.2s linear;
   }
   
   .btn_move_in:hover::before {
     transform: scaleX(1);
   }
   
-  .btn_move_in:hover>span {
-    color: #ce0e2d; /* 호버 시 글자 색상 변경 */
+  .btn_move_in:hover span {
+    color: #ce0e2d;
   }
+/* //top_btn */
+
 
 
 
