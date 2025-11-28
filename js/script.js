@@ -290,10 +290,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // hottok섹션 슬라이드
   const htSwiper = new Swiper(".ht_contents", {
-    slidesPerView: 4,
+    slidesPerView: 4,   // 화면 크기에 맞춰 슬라이드 개수 고정
     spaceBetween: 40,
-    roundLengths: true,
     loop: true,
+    loopAdditionalSlides: 6,
+    slidesPerGroup: 1,
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
@@ -301,40 +302,43 @@ document.addEventListener('DOMContentLoaded', function () {
     pagination: {
       el: ".swiper-scrollbar",
       type: "progressbar",
-    }, on: {
+    },
+    on: {
       init: function () {
-        this.slideToLoop(1, 0); // 두 번째 슬라이드를 첫 화면처럼 시작
-        this.updateProgress();
-        this.updateSlidesClasses();
-        this.pagination.update();
+        // 두 번째 슬라이드를 첫 화면으로 설정
+        this.slideToLoop(1, 0);
+
+        // 내부 상태 동기화
+        this.activeIndex = 1;          // 현재 activeIndex를 두 번째 슬라이드로
+        this.realIndex = 1;            // 실제 슬라이드 인덱스
+        this.updateSlidesClasses();    // 클래스 재적용
+        this.pagination.update();      // 프로그래스바/페이지네이션 업데이트
+        this.updateProgress();         // 진행률 업데이트
       }
     },
     breakpoints: {
+      0: {
+        slidesPerView: 1,   // 모바일에서는 1개
+        spaceBetween: 16,
+      },
       640: {
-        slidesPerView: 1,
+        slidesPerView: 2,
         spaceBetween: 16,
       },
       768: {
         slidesPerView: 2,
-        spaceBetween: 20,
+        spaceBetween: 16,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 16,
       },
       1440: {
         slidesPerView: 4,
         spaceBetween: 40,
       },
     },
-
   });
-
-  // 2. 클릭용 overlay
-  $('.swiper-scrollbar-overlay').on('click', function (e) {
-    var drect = this.getBoundingClientRect();
-    var ratio = (e.clientX - drect.left) / drect.width;
-
-    htSwiper.slideToLoop(index); // loop 모드용
-  });
-
-  htSwiper.init();
 
 
   //creat motion
