@@ -7,7 +7,7 @@ $(function () {
     $("nav").off('mouseleave click');
     $(".close").off('click');
 
-    if (window.innerWidth > 1024) {
+    if (window.innerWidth > 768) {
       // PC: hover 이벤트
       $(".nav_btn").on('mouseenter', function () {
         $("nav").addClass("on");
