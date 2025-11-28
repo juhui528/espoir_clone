@@ -148,6 +148,8 @@ $(function () {
 
 });
 
+//JQuery
+
 
 
 
@@ -248,7 +250,6 @@ document.addEventListener('DOMContentLoaded', function () {
       productSwiper = new Swiper(".nproducts_wrap", {
         slidesPerView: 3,   // 한 장씩
         spaceBetween: 4,
-        loop: false,
         scrollbar: {
           el: ".swiper-scrollbar",
           type: "progressbar",
@@ -282,6 +283,19 @@ document.addEventListener('DOMContentLoaded', function () {
   // 리사이즈 시 적용
   window.addEventListener("resize", () => {
     initProductSwiper();
+  });
+
+  bigimgSwiper.on("slideChange", function () {
+    const realIndex = bigimgSwiper.realIndex; // loop에서도 실제 idx
+
+    // 제품 highlight 업데이트
+    products.forEach((pd, idx) => pd.classList.remove("on"));
+    products[realIndex].classList.add("on");
+
+    // ⭐ productSwiper가 있을 때 자동 이동시키기
+    if (productSwiper) {
+      productSwiper.slideTo(realIndex, 300); // (index, speed)
+    }
   });
 
 
